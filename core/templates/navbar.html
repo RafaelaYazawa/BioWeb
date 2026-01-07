@@ -1,0 +1,28 @@
+{% load static %}
+
+<nav class="navbar navbar-expand-lg bg-warning p-2">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{% url 'index' %}">BioWeb</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <img src="{% static 'img/bio.png' %}" alt="" width="40">
+    <div class="collapse navbar-collapse flex justify-content-between" id="navbarSupportedContent">
+      <ul class="navbar-nav  mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Home</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'biographies' %}">Biographies</a>
+        </li>
+      </ul>
+
+      <form class="d-flex" role="search" action="{% url 'biographies' %}" action="get" >
+        <input class="form-control me-2" type="search" placeholder="Search" name="query" aria-label="Search"/>
+        <button class="btn btn-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
