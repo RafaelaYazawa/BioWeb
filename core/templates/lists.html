@@ -26,6 +26,11 @@
         <td class="fs-5">{{ person.name }}</td>
         <td>{{ person.created_at}}</td>
         <td>{{ person.modified_at}}</td>
+        <td>
+          <a class="btn btn-outline-success" href="{% url 'bio' person.id %}">
+            <i class="fa-solid fa-book-open-reader"></i> Read
+          </a>
+        </td>
     </tr>
     {% endfor %}
     </tbody>

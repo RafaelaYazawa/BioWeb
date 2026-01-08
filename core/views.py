@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.shortcuts import get_object_or_404
 from . models import *
 
 # Create your views here.
@@ -16,3 +17,10 @@ def list(request):
         "people": people
     }
     return render(request, "lists.html", context=context)
+
+def details(request, id):
+    person = get_object_or_404(Person, pk=id)
+    context = {
+        "person": person
+    }
+    return render(request, "biography.html", context=context)
