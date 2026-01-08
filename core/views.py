@@ -9,12 +9,13 @@ def index(request):
 def list(request):
     search = request.GET.get("query")
     if search:
-        people = Person.objects.filter(biography__contains=search)
+        people = Person.objects.filter(name__contains=search)
     else:
         people = Person.objects.all()
 
     context = {
-        "people": people
+        "people": people,
+        "search": search
     }
     return render(request, "lists.html", context=context)
 

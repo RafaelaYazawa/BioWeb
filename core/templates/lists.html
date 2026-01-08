@@ -20,20 +20,32 @@
     </thead>
 
     <tbody>
-    {% for person in people %}
+    {% if people %}
+      {% for p in people %}
+      <tr>
+        <th>{{ p.id }}</th>
+          <td class="fs-5">{{ p.name }}</td>
+          <td>{{ p.created_at}}</td>
+          <td>{{ p.modified_at}}</td>
+          <td>
+            <a class="btn btn-outline-success" href="{% url 'bio' p.id %}">
+              <i class="fa-solid fa-book-open-reader"></i> Read
+            </a>
+          </td>
+      </tr>
+      {% endfor %}
+    {% else %}
     <tr>
-      <th>{{ person.id }}</th>
-        <td class="fs-5">{{ person.name }}</td>
-        <td>{{ person.created_at}}</td>
-        <td>{{ person.modified_at}}</td>
-        <td>
-          <a class="btn btn-outline-success" href="{% url 'bio' person.id %}">
-            <i class="fa-solid fa-book-open-reader"></i> Read
-          </a>
-        </td>
+       <td colspan="5" class="text-left text-muted">
+        No results can be found for {{ search }}. <a href="{% url 'biographies' %}" class="link-secondary link-secondary link-offset-2 link-underline-opacity-0">
+          <i class="fa-solid fa-arrow-rotate-right"></i> Reload list
+        </a>
+      </td>
     </tr>
-    {% endfor %}
+
+    {% endif %}
     </tbody>
   </table>
+
 
 {% endblock %}
